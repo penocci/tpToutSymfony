@@ -14,6 +14,15 @@
 		{% block stylesheets %}{% endblock %}
 	</head>
 	<body>
+
+		{% if app.user %}
+			<div class="mb-3">
+				Vous êtes connecté comme :
+				{{ app.user.username }},
+				<a href="{{ path('app_logout') }}">Déconnexion</a>
+			</div>
+		{% endif %}
+
 		{% block body %}{% endblock %}
 		{% block javascripts %}{% endblock %}
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
