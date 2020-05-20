@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block title %}Formulaire d'inscription
+{% endblock %}
+{% block body %}
+	<h4>Editer
+
+	</h4>
+	<div>
+		{{ form_start(form) }}
+		{{ form_errors(form) }}
+
+		<div>
+			{{ form_label(form.nom, "Nom") }}
+			{{ form_errors(form.nom) }}
+			<div>
+				{{ form_widget(form.nom) }}
+			</div>
+		</div>
+
+		<div>
+			{{ form_label(form.prenom, "Prénom") }}
+			{{ form_errors(form.prenom) }}
+			<div>
+				{{ form_widget(form.prenom) }}
+			</div>
+		</div>
+		<div>
+			{{ form_label(form.email, "Email") }}
+			{{ form_errors(form.email) }}
+			<div>
+				{{ form_widget(form.email) }}
+			</div>
+		</div>
+		<div>
+			{{ form_label(form.roles, "Rôle") }}
+			{{ form_errors(form.roles) }}
+
+			<div>
+				{{ form_widget(form.roles) }}
+
+			</div>
+		</div>
+		<div>
+			{{ form_label(form.password, "Password") }}
+			{{ form_errors(form.password) }}
+
+			<div>
+				{{ form_widget(form.password) }}
+
+			</div>
+		</div>
+
+		<div>
+			{{ form_label(form.formation, "Formation") }}
+			{{ form_errors(form.formation) }}
+
+			<div>
+				{{ form_widget(form.formation) }}
+
+			</div>
+		</div>
+
+
+		<div>
+			{{ form_rest(form) }}
+		</div>
+<a href="{{ path('formation_index') }}">back to list</a>
+
+		{{ form_end(form) }}
+	</div>
+
+
+{% endblock %}

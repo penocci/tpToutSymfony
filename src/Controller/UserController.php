@@ -61,7 +61,7 @@ class UserController extends AbstractController
 
     /**
      * @IsGranted("ROLE_FORMATEUR")
-     * @Route("/user/show", name="user_show_all")
+     * @Route("/user/show", name="user_show_all", methods={"GET"})
      */
     public function showAllUser(UserRepository $userRepository)
     {
@@ -76,7 +76,7 @@ class UserController extends AbstractController
     }
     /**
      * @IsGranted("ROLE_FORMATEUR")
-     * @Route("/user/{id}", name="user_show")
+     * @Route("/user/{id}", name="user_show", methods={"GET"})
      */
     public function showUser(int $id, UserRepository $userRepository)
     {
@@ -93,7 +93,7 @@ class UserController extends AbstractController
         ]);
     }
     /**
-     * @Route("/user/delete/{id}", name="user_delete")
+     * @Route("/user/delete/{id}", name="user_delete", methods={"DELETE"})
      */
     public function deleteUser(int $id, EntityManagerInterface
     $entityManager)
@@ -112,7 +112,7 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/user/edit/{id}", name="user_update")
+     * @Route("/user/{id}/edit", name="user_update", methods={"GET","POST"})
      */
     public function updateUser(User $user, EntityManagerInterface $entityManager, Request $request)
     {
@@ -131,7 +131,7 @@ class UserController extends AbstractController
 
     /**
      * @IsGranted("ROLE_FORMATEUR")
-     * @Route("/user/{nom}/{prenom}", name="user_show_one")
+     * @Route("/user/{nom}/{prenom}", name="user_show_one", methods={"GET"})
      */
     public function showUserByNomAndPrenom(
         string $nom,

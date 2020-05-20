@@ -3,11 +3,11 @@
 {% block title %}Edit Formation{% endblock %}
 
 {% block body %}
-    <h1>Edit Formation</h1>
+    <h1>Editer Formation</h1>
 
-    {{ include('formation/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('formation/_form.html.twig', {'button_label': 'Éditer'}) }}
 
-    <a href="{{ path('formation_index') }}">back to list</a>
+    <a href="{{ path('formation_index') }}">retour à la liste</a>
 
     {{ include('formation/_delete_form.html.twig') }}
 {% endblock %}
