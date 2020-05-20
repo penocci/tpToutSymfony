@@ -1,21 +1,19 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello UserController!
+{% block title %}UserController
 {% endblock %}
 {% block body %}
-	<h1>Hello {{ controller_name }}!</h1>
+	<h4>Hello !</h4>
+
+
 	<ul>
-		{# {% if is_granted('ROLE_ADMIN') %} #}
+		{% if is_granted('ROLE_FORMATEUR') %}
 			{% for user in users %}
 				<li>{{ user.id }}
 					{{ user.prenom }}
 					{{ user.nom }}
 				</li>
 			{% endfor %}
+		{% endif %}
 
-		{# {% endif %} #}
-
-
-	</li>
-
-
-</ul>{% endblock %}
+	</ul>
+{% endblock %}

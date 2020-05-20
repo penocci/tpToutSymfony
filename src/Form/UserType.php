@@ -3,8 +3,11 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Entity\Formation;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -30,7 +33,15 @@ class UserType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('formation', ChoiceType::class)
+            ->add('formation', EntityType::class, [
+                'class' => Formation::class,
+                'choice_label' => 'nom',
+                'query_builder' => function (EntityRepository $repo) {
+                    return $repo->createQueryBuilder('s');
+                },
+                'label' => 'Formation',
+                'multiple' => true
+            ])
             ->add('Inscription', SubmitType::class);
     }
 

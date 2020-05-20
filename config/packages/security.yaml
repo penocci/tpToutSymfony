@@ -41,3 +41,5 @@ security:
         - { path: ’ˆ/login’, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ’ˆ/*’, roles: [IS_AUTHENTICATED_FULLY] }
 
+    role_hierarchy:
+        ROLE_FORMATEUR: [ROLE_STAGIAIRE, ROLE_ALLOWED_TO_SWITCH]
