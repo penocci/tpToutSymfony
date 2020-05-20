@@ -53,7 +53,7 @@ class UserController extends AbstractController
             ));
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('user_show_all');
+            return $this->redirectToRoute('home');
         }
         return $this->render('user/add.html.twig', [
             'controller_name' => 'UserController',
@@ -123,10 +123,14 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                $user->getPassword()
+            ));
             $entityManager->flush();
-            return $this->redirectToRoute('user_show_all');
+            return $this->redirectToRoute('home');
         }
-        return $this->render('user/add.html.twig', [
+        return $this->render('user/edit.html.twig', [
             'controller_name' => 'UserController',
             'form' => $form->createView(),
         ]);

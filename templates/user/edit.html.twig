@@ -64,7 +64,11 @@
 		<div>
 			{{ form_rest(form) }}
 		</div>
-<a href="{{ path('formation_index') }}">back to list</a>
+		<button class="btn btn-success">{{ button_label|default('Modifier') }}</button>
+		<a href="{{ path('home') }}">
+			<button class="btn btn-info">{{ button_label|default('Retour') }}</button>
+		</a>
+
 
 		{{ form_end(form) }}
 	</div>

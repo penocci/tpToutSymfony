@@ -41,8 +41,7 @@ class UserType extends AbstractType
                 },
                 'label' => 'Formation',
                 'multiple' => true
-            ])
-            ->add('Inscription', SubmitType::class);
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
