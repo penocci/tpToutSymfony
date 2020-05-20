@@ -13,6 +13,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * @IsGranted("ROLE_STAGIAIRE")
+ * @Route("/user")
+ */
 class UserController extends AbstractController
 {
     private $passwordEncoder;
@@ -22,7 +26,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user", name="user")
+     * @Route("/", name="user")
      */
     public function index()
     {
@@ -32,7 +36,7 @@ class UserController extends AbstractController
         ]);
     }
     /**
-     * @Route("/user/add", name="user_add", methods={"GET","POST"})
+     * @Route("/add", name="user_add", methods={"GET","POST"})
      */
     public function addForm(EntityManagerInterface $entityManager, Request $request)
     {
@@ -61,7 +65,7 @@ class UserController extends AbstractController
 
     /**
      * @IsGranted("ROLE_FORMATEUR")
-     * @Route("/user/show", name="user_show_all", methods={"GET"})
+     * @Route("/show", name="user_show_all", methods={"GET"})
      */
     public function showAllUser(UserRepository $userRepository)
     {
@@ -76,7 +80,7 @@ class UserController extends AbstractController
     }
     /**
      * @IsGranted("ROLE_FORMATEUR")
-     * @Route("/user/{id}", name="user_show", methods={"GET"})
+     * @Route("/{id}", name="user_show", methods={"GET"})
      */
     public function showUser(int $id, UserRepository $userRepository)
     {
@@ -86,14 +90,13 @@ class UserController extends AbstractController
                 'Personne non trouvée avec l\'id ' . $id
             );
         }
-        return $this->render('user/index.html.twig', [
+        return $this->render('user/show.html.twig', [
             'controller_name' => 'UserController',
-            'personne' => $user,
-            'adjectif' => 'recherchée'
+            'user' => $user
         ]);
     }
     /**
-     * @Route("/user/delete/{id}", name="user_delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="user_delete", methods={"DELETE"})
      */
     public function deleteUser(int $id, EntityManagerInterface
     $entityManager)
@@ -112,7 +115,7 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/user/{id}/edit", name="user_update", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="user_update", methods={"GET","POST"})
      */
     public function updateUser(User $user, EntityManagerInterface $entityManager, Request $request)
     {
@@ -131,7 +134,7 @@ class UserController extends AbstractController
 
     /**
      * @IsGranted("ROLE_FORMATEUR")
-     * @Route("/user/{nom}/{prenom}", name="user_show_one", methods={"GET"})
+     * @Route("/{nom}/{prenom}", name="user_show_one", methods={"GET"})
      */
     public function showUserByNomAndPrenom(
         string $nom,

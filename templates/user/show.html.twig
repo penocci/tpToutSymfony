@@ -7,12 +7,12 @@
 
 	<ul>
 		{% if is_granted('ROLE_FORMATEUR') %}
-			{% for user in users %}
-				<li>{{ user.id }}
+			
+				{{ user.id }}
 					{{ user.prenom }}
 					{{ user.nom }}
-				</li>
-			{% endfor %}
+			
+		
 		{% endif %}
 
 	</ul>
