@@ -7,5 +7,14 @@
 
     {{ include('formation/_form.html.twig') }}
 
-    <a href="{{ path('formation_index') }}">retour à la liste</a>
+
+
+<a href="{{ path('home') }}">
+	<button class="btn btn-primary">{{ button_label|default('Retour') }}</button>
+</a>
+<a href="{{ path('formation_index') }}">
+	<button class="btn btn-info">{{ button_label|default('Toutes les formations') }}</button>
+</a>
+
+
 {% endblock %}

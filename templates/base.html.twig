@@ -23,7 +23,36 @@
 			</div>
 		{% endif %}
 
-		{% block body %}{% endblock %}
+		{% block body %}
+<div class="example-wrapper">
+	<h1>FormAchref</h1>
+	<h4>Vous forme comme un chef</h4>
+
+
+	<ul>
+		<li>
+			<a href="/user/{{app.user.id}}/edit">Mon compte</a>
+
+		</li>
+
+		<li>
+			<a href="/formation">Formations</a>
+		</li>
+		{% if is_granted('ROLE_FORMATEUR') %}
+
+			<li>
+				<a href='/formation/new'>Créer formations</a>
+			</li>
+		{% endif %}
+
+	</ul>
+</div>
+
+		
+		
+		
+		
+		{% endblock %}
 		{% block javascripts %}{% endblock %}
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

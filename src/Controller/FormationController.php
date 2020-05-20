@@ -12,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @IsGranted("ROLE_FORMATEUR")
+ * @IsGranted("ROLE_STAGIAIRE")
  * @Route("/formation")
  */
 class FormationController extends AbstractController
@@ -28,6 +28,7 @@ class FormationController extends AbstractController
     }
 
     /**
+     * * @IsGranted("ROLE_FORMATEUR")
      * @Route("/new", name="formation_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
